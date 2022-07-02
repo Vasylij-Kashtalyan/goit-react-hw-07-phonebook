@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import s from "./Form.module.css";
 import { addContact } from "../../redux/contacts/phonebookOperation";
 import Notiflix from "notiflix";
+// import { createContact } from "../../services/API";
 
 const Form = () => {
   const [name, setName] = useState("");
@@ -39,9 +40,21 @@ const Form = () => {
     }
 
     dispatch(addContact({ name, number }));
-    reset();
 
-    return Notiflix.Notify.success(`${name} is adde in contacts`);
+    if (addContact.fulfilled) {
+      reset();
+      return Notiflix.Notify.success(`${name} is adde in contacts`);
+    }
+
+    // if (
+    //   createContact().then((resolve) => {
+    //     if (resolve) {
+    //       reset();
+    //       return Notiflix.Notify.success(`${name} is adde in contacts`);
+    //     }
+    //   })
+    // ) {
+    // }
   };
 
   const reset = () => {

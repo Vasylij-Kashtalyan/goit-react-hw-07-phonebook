@@ -24,6 +24,7 @@ const phonebookSlice = createSlice({
       state.status = "resolved";
       state.entities = payload;
     },
+
     [removeContact.fulfilled]: (state, { payload }) => {
       return {
         ...state,
@@ -33,6 +34,7 @@ const phonebookSlice = createSlice({
         }),
       };
     },
+
     [addContact.fulfilled]: (state, { payload }) => {
       return {
         ...state,
